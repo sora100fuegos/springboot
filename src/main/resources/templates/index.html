@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<body>
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+<!-- Load our React component. -->
+<script src="static/like_button.js"></script>
+<div class="jumbotron">
+  <hi class = "display-4" th:text=${totalReportedCases}> </hi>
+    <p class ="lead">Total cases reported today</p>
+
+</div>
+
+<div id="like_button_container"></div>
+<div  class = "container">
+
+  <table>
+    <tr>
+      <th> State </th>
+      <th> Country </th>
+      <th> total cases reported </th>
+      <th> change since last days </th>
+
+    </tr>
+    <tr th:each = "LocationStat : ${locationStats}">
+      <td th:text = "${LocationStat.State}"> State </td>
+      <td th:text = "${LocationStat.Country}"> Country </td>
+      <td th:text = "${LocationStat.latestTotalCases}" > total cases reported </td>
+      <td th:text = "${LocationStat.diffPreviousDays}"> change since last days </td>
+
+    </tr>
+  </table>
+
+</div>
+
+</body>
+</html>
